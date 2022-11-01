@@ -85,3 +85,45 @@ mysql> SELECT * FROM employee_payroll;
 |  3 | Abhay    | 300000 | 2021-11-24 |
 |  4 | Aakash   | 375000 | 2022-03-02 |
 +----+----------+--------+------------+
+
+//UC5: Ability to retrieve salary data for a particular employee as well as all employees who have joined in a particular data range from the payroll service database
+
+-> SELECT salary FROM employee_payroll WHERE name = 'Abhishek’ Query to View Abhishek’s salary 
+-> WHERE Condition Clause is used to retrieve the row needed from the table
+
+mysql> SELECT salary FROM employee_payroll WHERE name = 'Abhishek';
++--------+
+| salary |
++--------+
+| 150000 |
++--------+
+
+-> WHERE Condition Clause is used to retrieve the row needed from the table.
+-> BETWEEN is used to retive the data based on the joining date of employee.
+-> using CAST() function convert string date into the Date.
+-> WHERE start BETWEEN CAST('2018-01-01' AS DATE) AND DATE(NOW()) query used to retrive the data from date of joining of Abhishek Employee to till now joining the date of the employee.
+
+mysql> SELECT * FROM employee_payroll
+       WHERE start BETWEEN CAST('2016-05-15' AS DATE) AND DATE(NOW());
++----+----------+--------+------------+
+| id | name     | salary | start      |
++----+----------+--------+------------+
+|  1 | Abhishek | 150000 | 2016-05-15 |
+|  2 | Rahul    | 275000 | 2019-09-04 |
+|  3 | Abhay    | 300000 | 2021-11-24 |
+|  4 | Aakash   | 375000 | 2022-03-02 |
++----+----------+--------+------------+
+
+-> one more Example
+
+mysql> SELECT * FROM employee_payroll
+    ->  WHERE start BETWEEN CAST('2019-09-04' AS DATE) AND DATE(NOW());
++----+--------+--------+------------+
+| id | name   | salary | start      |
++----+--------+--------+------------+
+|  2 | Rahul  | 275000 | 2019-09-04 |
+|  3 | Abhay  | 300000 | 2021-11-24 |
+|  4 | Aakash | 375000 | 2022-03-02 |
++----+--------+--------+------------+
+
+
