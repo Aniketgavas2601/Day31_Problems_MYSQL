@@ -1,0 +1,39 @@
+
+//UC1: Ability to create a payroll service database
+
+->create database query to create a payroll_service database
+
+mysql> CREATE DATABASE payroll_service;
+Query OK, 1 row affected (0.01 sec)
+
+-> see the database created using query show databases
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| payroll_service    |
+| performance_schema |
+| pets               |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+
+-> for going to the database which is created by using USE payroll_service
+
+mysql> USE payroll_service;
+Database changed
+
+-> go to the database using SELECT DATABASE() query
+
+mysql> SELECT DATABASE();
++-----------------+
+| DATABASE()      |
++-----------------+
+| payroll_service |
++-----------------+
+
+
