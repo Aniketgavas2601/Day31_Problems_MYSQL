@@ -71,3 +71,17 @@ mysql> INSERT INTO employee_payroll ( name, salary, start ) VALUES
     ->       ('Rahul', 275000.00, '2019-09-04' ),							# 2nd employee details
     ->       ('Abhay', 300000.00, '2021-11-24' ),							# 3rd employee details
     ->       ('Aakash', 375000.00, '2022-03-02' );							# 4th employee details
+
+//UC4: Ability to retrieve all the employee payroll data that is added to payroll service database
+
+-> SELECT * FROM employee_payroll query to retrive all the data from employee_payroll table.
+
+mysql> SELECT * FROM employee_payroll;
++----+----------+--------+------------+
+| id | name     | salary | start      |
++----+----------+--------+------------+
+|  1 | Abhishek | 150000 | 2016-05-15 |
+|  2 | Rahul    | 275000 | 2019-09-04 |
+|  3 | Abhay    | 300000 | 2021-11-24 |
+|  4 | Aakash   | 375000 | 2022-03-02 |
++----+----------+--------+------------+
