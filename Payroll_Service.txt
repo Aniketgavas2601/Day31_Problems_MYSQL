@@ -127,3 +127,70 @@ mysql> SELECT * FROM employee_payroll
 +----+--------+--------+------------+
 
 
+EXTRA:
+-> Adding a Female Employee in the employee_payroll table beacuse I added only male employees in the table
+
+mysql> INSERT INTO employee_payroll ( name, salary, start ) VALUES
+    -> ('Shreya', 450000.00, '2022-02-22' );
+
+mysql>  SELECT * FROM employee_payroll;
++----+----------+--------+------------+
+| id | name     | salary | start      |
++----+----------+--------+------------+
+|  1 | Abhishek | 150000 | 2016-05-15 |
+|  2 | Rahul    | 275000 | 2019-09-04 |
+|  3 | Abhay    | 300000 | 2021-11-24 |
+|  4 | Aakash   | 375000 | 2022-03-02 |
+|  5 | Shreya   | 450000 | 2022-02-22 |
++----+----------+--------+------------+
+
+
+//UC6: Ability to add Gender to Employee Payroll Table and Update the Rows to reflect the correct Employee Gender
+
+-> Alter Table Command to add Field gender after the name field
+
+mysql> ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;					# Adding gender field
+
+-> describe new updated field
+
+mysql> DESCRIBE employee_payroll;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(150) | NO   |     | NULL    |                |
+| gender | char(1)      | YES  |     | NULL    |                |
+| salary | double       | NO   |     | NULL    |                |
+| start  | date         | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+
+-> Update Query to set the gender using where condition with the employee name
+
+mysql> update employee_payroll set gender = 'F' where name = 'Shreya';					# adding genders to the employee with respect to name
+
+mysql> SELECT * FROM employee_payroll;
++----+----------+--------+--------+------------+
+| id | name     | gender | salary | start      |
++----+----------+--------+--------+------------+
+|  1 | Abhishek | NULL   | 150000 | 2016-05-15 |
+|  2 | Rahul    | NULL   | 275000 | 2019-09-04 |
+|  3 | Abhay    | NULL   | 300000 | 2021-11-24 |
+|  4 | Aakash   | NULL   | 375000 | 2022-03-02 |
+|  5 | Shreya   | F      | 450000 | 2022-02-22 |
++----+----------+--------+--------+------------+
+
+-> similarly update all the employees gender using where condition with the employee name
+
+mysql> update employee_payroll set gender = 'M' where name = 'Abhishek' or name = 'Rahul' or name = 'Abhay' or name = 'Aakash';
+
+mysql> SELECT * FROM employee_payroll;
++----+----------+--------+--------+------------+
+| id | name     | gender | salary | start      |
++----+----------+--------+--------+------------+
+|  1 | Abhishek | M      | 150000 | 2016-05-15 |
+|  2 | Rahul    | M      | 275000 | 2019-09-04 |
+|  3 | Abhay    | M      | 300000 | 2021-11-24 |
+|  4 | Aakash   | M      | 375000 | 2022-03-02 |
+|  5 | Shreya   | F      | 450000 | 2022-02-22 |
++----+----------+--------+--------+------------+
+
