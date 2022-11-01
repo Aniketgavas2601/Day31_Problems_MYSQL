@@ -194,3 +194,90 @@ mysql> SELECT * FROM employee_payroll;
 |  5 | Shreya   | F      | 450000 | 2022-02-22 |
 +----+----------+--------+--------+------------+
 
+
+//UC7: Ability to find sum, average, min, max and number of male and female employees 
+
+-> Database Function SUM, AVG, MIN, MAX, COUNT to do analysis by Male or Female.
+
+-> retrive the sum of salaries data of male employees from employee_payroll table by using GROUP BY gender query.
+
+mysql> SELECT SUM(salary) FROM employee_payroll where gender = 'M' GROUP BY gender;
++-------------+
+| SUM(salary) |
++-------------+
+|     1100000 |
++-------------+
+
+-> retrive the Avg of salaries data of male employees from employee_payroll table by using GROUP BY gender query.
+
+mysql> SELECT AVG(salary) FROM employee_payroll where gender = 'M' GROUP BY gender;
++-------------+
+| AVG(salary) |
++-------------+
+|      275000 |
++-------------+
+
+
+-> retrive the Avg of salaries data of all employees from employee_payroll table by using GROUP BY gender query.
+mysql> SELECT AVG(salary) FROM employee_payroll GROUP BY gender;
++-------------+
+| AVG(salary) |
++-------------+
+|      275000 |
+|      450000 |
++-------------+
+# in this above database we dont no the which avg salary for which gender
+
+
+
+-> retrive the Avg of salaries data of all employees from employee_payroll table by using GROUP BY gender query.
+
+mysql> SELECT gender, AVG(salary) FROM employee_payroll GROUP BY gender;
++--------+-------------+
+| gender | AVG(salary) |
++--------+-------------+
+| M      |      275000 |
+| F      |      450000 |
++--------+-------------+
+
+# in this above database we know the Which avg Salary for which gender
+
+-> retrive the salary data on the basis of MIN() function.
+
+mysql> SELECT gender, MIN(salary) FROM employee_payroll GROUP BY gender;
++--------+-------------+
+| gender | MIN(salary) |
++--------+-------------+
+| M      |      150000 |
+| F      |      450000 |
++--------+-------------+
+
+# in this above database we getting minimum salary of employee from employee_payroll table
+
+-> retrive the salary data on the basis of MAX() function.
+
+mysql> SELECT gender, MAX(salary) FROM employee_payroll GROUP BY gender;
++--------+-------------+
+| gender | MAX(salary) |
++--------+-------------+
+| M      |      375000 |
+| F      |      450000 |
++--------+-------------+
+
+# in this above database we getting maximum salary of employee from employee_payroll table
+
+-> retrive the salary data on the basis of COUNT() function.
+
+mysql> SELECT gender, COUNT(salary) FROM employee_payroll GROUP BY gender;
++--------+---------------+
+| gender | COUNT(salary) |
++--------+---------------+
+| M      |             4 |
+| F      |             1 |
++--------+---------------+
+
+# in this above database we getting Number of employees on the basis gender
+
+
+
+
